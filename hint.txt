@@ -1,0 +1,10 @@
+add
+
+
+aadhar data
+
+farmer id data
+
+area and lat,lon data
+
+https://developers-dot-devsite-v2-prod.appspot.com/maps/documentation/utils/geocoder

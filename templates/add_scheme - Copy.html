@@ -1,0 +1,255 @@
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crop Insurance</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="../static/assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+
+</head>
+<body>
+    <!-- Left Panel -->
+
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                     <li>
+                        <a href="/ins_home"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>                    </li>
+                   
+                    
+                    
+					<li class="menu-item-has-children">
+                        <a href="/ins_pay_view" class="dropdown-toggle"> <i class="menu-icon fa fa-table"></i>Payment</a>
+                       
+                    </li>
+					<li class="menu-item-has-children">
+                        <a href="/ins_claim" class="dropdown-toggle"> <i class="menu-icon fa fa-table"></i>Farmer Claims</a>
+                       
+                    </li>
+					<li class="menu-item-has-children">
+                        <a href="/ins_payout" class="dropdown-toggle"> <i class="menu-icon fa fa-table"></i>Payouts</a>
+                       
+                    </li>
+					<li class="menu-item-has-children">
+                        <a href="/ins_query" class="dropdown-toggle"> <i class="menu-icon fa fa-table"></i>Farmer Query</a>
+                       
+                    </li>
+					<!--<li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Scheme Details</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="../static/tables-basic.html"></a></li>
+                            <li><i class="fa fa-table"></i><a href="../static/tables-data.html">Data Table</a></li>
+                        </ul>
+                    </li>-->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="/logout" class="dropdown-toggle"> <i class="menu-icon fa fa-th"></i>Logout</a>
+                        
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside><!-- /#left-panel -->
+
+    <!-- Left Panel -->
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="" style="color:#3399CC; font-weight:bold">Farmer</a>
+                    <a class="navbar-brand hidden" href="../static/."><img src="../static/images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                       
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="../static/images/profile.jpg" alt="User">{{data[2]}}
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            
+                            <a class="nav-link" href="/logout"><i class="fa fa-power-off"></i>Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>New Schemes</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="/ins_home">Dashboard</a></li>
+                                   
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="animated fadeIn">
+
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Add Scheme</strong>
+                            </div>
+                            <div class="card-body">
+                                <!-- Credit Card -->
+                                <div id="pay-invoice">
+                                    <div class="card-body">
+                                        <!--<div class="card-title">
+                                            <h3 class="text-center">Add Scheme</h3>
+                                        </div>-->
+                                        <hr>
+										{% if msg=="success" %}
+										<span style="color:#009966">Scheme Details Added Success..</span>
+										<script>
+//Using setTimeout to execute a function after 5 seconds.
+setTimeout(function () {
+   //Redirect with JavaScript
+   window.location.href= '/add_scheme';
+}, 2000);
+</script>
+										{% endif %}
+                                        <form action="#" method="post" enctype="multipart/form-data">
+                                            <!--<div class="form-group text-center">
+                                                <ul class="list-inline">
+                                                    <li class="list-inline-item"><i class="text-muted fa fa-cc-visa fa-2x"></i></li>
+                                                    <li class="list-inline-item"><i class="fa fa-cc-mastercard fa-2x"></i></li>
+                                                    <li class="list-inline-item"><i class="fa fa-cc-amex fa-2x"></i></li>
+                                                    <li class="list-inline-item"><i class="fa fa-cc-discover fa-2x"></i></li>
+                                                </ul>
+                                            </div>-->
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Scheme Name</label>
+                                                <input id="cc-payment" name="scheme" type="text" class="form-control">
+                                            </div>
+											<div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Scheme Duration</label>
+                                                <input id="cc-payment" name="duration" type="text" class="form-control">
+                                            </div>
+											<div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Premium Rate</label>
+                                                <input id="cc-payment" name="premium" type="text" class="form-control">
+                                            </div>
+											<div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Monthly Payment</label>
+                                                <input id="cc-payment" name="monthly_pay" type="text" class="form-control">
+                                            </div>
+											
+                                            <div class="form-group has-success">
+                                                <label for="cc-name" class="control-label mb-1">Description</label>
+                                                <textarea name="details" class="form-control cc-name valid"></textarea>
+                                                
+                                            </div>
+                                           <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Scheme Photo</label>
+                                                <input id="cc-payment" name="file" type="file" class="form-control">
+                                            </div>
+                                            
+                                            <div>
+                                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                                    <!--<i class="fa fa-lock fa-lg"></i>&nbsp;
+                                                    <span id="payment-button-amount">Pay $100.00</span>-->
+                                                    <span id="payment-button-sending">Submit</span>
+                                                </button>
+                                            </div>
+                                        </form>
+										
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> <!-- .card -->
+
+                    </div><!--/.col-->
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-header"><strong>Schemes</strong><small> </small></div>
+                            <div class="card-body card-block">
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+
+
+        </div><!-- .animated -->
+    </div><!-- .content -->
+
+    <div class="clearfix"></div>
+
+    <footer class="site-footer">
+        <div class="footer-inner bg-white">
+            <div class="row">
+                <div class="col-sm-6">
+                    Crop Insurance
+                </div>
+                <div class="col-sm-6 text-right">
+                     <a href="https://colorlib.com"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div><!-- /#right-panel -->
+
+<!-- Right Panel -->
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="../static/assets/js/main.js"></script>
+
+
+</body>
+</html>
