@@ -26,14 +26,14 @@ import webbrowser
 from Crypto import Random
 from Crypto.Cipher import AES
 
-connection = psycopg2.connect(
+mydb = psycopg2.connect(
     dbname="crop_insurance_sql",
     user="crop_insurance_sql_user",
     password="5EHUihWGBQ9771bziRAbgLuUF6zmRSZ1",
     host="dpg-d12k28buibrs73fa0vn0-a.oregon-postgres.render.com",
     port="5432"
 )
-cursor = connection.cursor()
+cursor = mydb.cursor()
 app = Flask(__name__)
 ##session key
 app.secret_key = 'Ac989bmSnHPr_IVW8qh0QA'
