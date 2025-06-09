@@ -3,6 +3,7 @@ import os
 import base64
 from flask import Flask, render_template, Response, redirect, request, session, abort, url_for
 import mysql.connector
+import psycopg2
 import hashlib
 import shutil
 from datetime import datetime
@@ -25,14 +26,14 @@ import webbrowser
 from Crypto import Random
 from Crypto.Cipher import AES
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  charset="utf8",
-  database="crop_insurance"
-
+connection = psycopg2.connect(
+    dbname="crop_insurance_sql",
+    user="crop_insurance_sql_user",
+    password="5EHUihWGBQ9771bziRAbgLuUF6zmRSZ1",
+    host="dpg-d12k28buibrs73fa0vn0-a.oregon-postgres.render.com",
+    port="5432"
 )
+cursor = connection.cursor()
 app = Flask(__name__)
 ##session key
 app.secret_key = 'abcdef'
