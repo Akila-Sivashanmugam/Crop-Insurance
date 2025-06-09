@@ -36,7 +36,7 @@ connection = psycopg2.connect(
 cursor = connection.cursor()
 app = Flask(__name__)
 ##session key
-app.secret_key = 'abcdef'
+app.secret_key = 'Ac989bmSnHPr_IVW8qh0QA'
 
 UPLOAD_FOLDER = 'static/upload'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
