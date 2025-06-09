@@ -87,7 +87,7 @@ def index():
 
 
 
-    return render_template('web/index.html',msg=msg)
+    return render_template('web/index',msg=msg)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -105,7 +105,7 @@ def login():
             return redirect(url_for('userhome'))
         else:
             msg = 'Incorrect username/password!'
-    return render_template('web/login.html',msg=msg)
+    return render_template('web/login',msg=msg)
 
 @app.route('/login_admin', methods=['GET', 'POST'])
 def login_admin():
@@ -123,7 +123,7 @@ def login_admin():
             return redirect(url_for('admin'))
         else:
             msg = 'Incorrect username/password!'
-    return render_template('web/login_admin.html',msg=msg)
+    return render_template('web/login_admin',msg=msg)
 
 @app.route('/login_company', methods=['GET', 'POST'])
 def login_company():
