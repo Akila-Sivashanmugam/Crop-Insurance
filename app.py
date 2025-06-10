@@ -102,7 +102,7 @@ def login():
         account = cursor.fetchone()
         if account:
             session['username'] = uname
-            return redirect(url_for('userhome'))
+            return redirect(url_for('userhome.html'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('web/login.html',msg=msg)
@@ -120,7 +120,7 @@ def login_admin():
         account = cursor.fetchone()
         if account:
             session['username'] = uname
-            return redirect(url_for('admin'))
+            return redirect(url_for('admin.html'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('web/login_admin.html',msg=msg)
@@ -138,7 +138,7 @@ def login_company():
         account = cursor.fetchone()
         if account:
             session['username'] = uname
-            return redirect(url_for('ins_home'))
+            return redirect(url_for('ins_home.html'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('web/login_company.html',msg=msg)
