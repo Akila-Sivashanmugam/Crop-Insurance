@@ -123,7 +123,7 @@ def login_admin():
             return redirect(url_for('admin.html'))
         else:
             msg = 'Incorrect username/password!'
-    return render_template('web/login_admin.html',msg=msg)
+    return render_template('login_admin.html',msg=msg)
 
 @app.route('/login_company', methods=['GET', 'POST'])
 def login_company():
