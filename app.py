@@ -116,11 +116,11 @@ def login_admin():
         pwd=request.form['pass']
         
         cursor = mydb.cursor()
-        cursor.execute('SELECT * FROM ci_admin WHERE username=%s && password=%s', (uname, pwd))
+        cursor.execute('SELECT * FROM ci_admin WHERE username=%s AND password=%s', (uname, pwd))
         account = cursor.fetchone()
         if account:
             session['username'] = uname
-            return redirect(url_for('admin.html'))
+            return redirect(url_for('templates/admin'))
         else:
             msg = 'Incorrect username/password!'
     return render_template('web/login_admin.html',msg=msg)
