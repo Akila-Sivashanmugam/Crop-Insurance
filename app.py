@@ -91,39 +91,44 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    msg=""
+    msg = ""
 
-    if request.method=='POST':
-        uname=request.form['uname']
-        pwd=request.form['pass']
-        
+    if request.method == 'POST':
+        uname = request.form['uname']
+        pwd = request.form['pass']
+
         cursor = mydb.cursor()
         cursor.execute('SELECT * FROM ci_farmer WHERE username = %s AND password = %s', (uname, pwd))
         account = cursor.fetchone()
+        cursor.close()
+
         if account:
             session['username'] = uname
-            return redirect(url_for('userhome.html'))
+            return redirect(url_for('userhome'))  # <- must match route function name
         else:
             msg = 'Incorrect username/password!'
-    return render_template('web/login.html',msg=msg)
+    return render_template('web/login.html', msg=msg)
+
 
 @app.route('/login_admin', methods=['GET', 'POST'])
 def login_admin():
-    msg=""
+    msg = ""
 
-    if request.method=='POST':
-        uname=request.form['uname']
-        pwd=request.form['pass']
-        
+    if request.method == 'POST':
+        uname = request.form['uname']
+        pwd = request.form['pass']
+
         cursor = mydb.cursor()
-        cursor.execute('SELECT * FROM ci_admin WHERE username=%s AND password=%s', (uname, pwd))
+        cursor.execute('SELECT * FROM ci_admin WHERE username = %s AND password = %s', (uname, pwd))
         account = cursor.fetchone()
+        cursor.close()
+
         if account:
             session['username'] = uname
-            return redirect(url_for('templates/admin'))
+            return redirect(url_for('admin'))  # <- must match route function name
         else:
             msg = 'Incorrect username/password!'
-    return render_template('web/login_admin.html',msg=msg)
+    return render_template('web/login_admin.html', msg=msg)
 
 @app.route('/login_company', methods=['GET', 'POST'])
 def login_company():
