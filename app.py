@@ -132,21 +132,24 @@ def login_admin():
 
 @app.route('/login_company', methods=['GET', 'POST'])
 def login_company():
-    msg=""
+    msg = ""
 
-    if request.method=='POST':
-        uname=request.form['uname']
-        pwd=request.form['pass']
+    if request.method == 'POST':
+        uname = request.form['uname']
+        pwd = request.form['pass']
         
         cursor = mydb.cursor()
-        cursor.execute('SELECT * FROM ci_company WHERE username=%s && password=%s && approve_status=1', (uname, pwd))
+        cursor.execute('SELECT * FROM ci_company WHERE username = %s AND password = %s AND approve_status = 1', (uname, pwd))
         account = cursor.fetchone()
+        
         if account:
             session['username'] = uname
-            return redirect(url_for('ins_home.html'))
+            return redirect(url_for('ins_home'))  # Remove '.html' from endpoint name
         else:
-            msg = 'Incorrect username/password!'
-    return render_template('web/login_company.html',msg=msg)
+            msg = 'Incorrect username or password!'
+    
+    return render_template('web/login_company.html', msg=msg)
+
 
 
 ###
