@@ -668,58 +668,65 @@ def register():
 
 @app.route('/reg_company', methods=['GET', 'POST'])
 def reg_company():
-    msg=""
+    msg = ""
     mycursor = mydb.cursor()
-    aid=request.args.get("aid")
-    cid=request.args.get("cid")
-    filename=""
+    aid = request.args.get("aid")
+    cid = request.args.get("cid")
+    filename = ""
     now = datetime.datetime.now()
-    rdate=now.strftime("%d-%m-%Y")
+    rdate = now.strftime("%d-%m-%Y")
 
-            
-    if request.method=='POST':
-        company=request.form['company']
-        name=request.form['name']
-        mobile=request.form['mobile']
-        email=request.form['email']
-        address=request.form['address']
-        district=request.form['district']
-        company_code=request.form['company_code']
-        uname=request.form['uname']
-        pass1=request.form['pass']
-    
-        mycursor.execute("SELECT count(*) FROM ci_company WHERE username = %s", (uname,))
+    if request.method == 'POST':
+        company = request.form['company']
+        name = request.form['name']
+        mobile = request.form['mobile']
+        email = request.form['email']
+        address = request.form['address']
+        district = request.form['district']
+        company_code = request.form['company_code']
+        uname = request.form['uname']
+        pass1 = request.form['pass']
+
+        # Check if username already exists
+        mycursor.execute("SELECT COUNT(*) FROM ci_company WHERE username = %s", (uname,))
         cnt = mycursor.fetchone()[0]
-        if cnt==0:
-            mycursor.execute("SELECT max(id)+1 FROM ci_company")
+
+        if cnt == 0:
+            # Generate new ID
+            mycursor.execute("SELECT MAX(id) + 1 FROM ci_company")
             maxid = mycursor.fetchone()[0]
             if maxid is None:
-                maxid=1
+                maxid = 1
 
-            file = request.files['file']
-            if file.filename == '':
-                flash('No selected file')
+            # File Upload Handling
+            file = request.files.get('file')
+            if file and file.filename != '':
+                fname = secure_filename(file.filename)
+                filename = f"P{maxid}_{fname}"
+                upload_path = os.path.join("static/upload", filename)
+                file.save(upload_path)
+            else:
+                flash('No file selected')
                 return redirect(request.url)
-            if file:
-                fname = file.filename
-                ff = secure_filename(fname)
-                filename="P"+str(maxid)+ff
-                
-                file.save(os.path.join("static/upload", filename))
 
-            bcdata="ID: "+str(maxid)+",Company :"+name+", Code:"+company_code+",Register Date: "+rdate+""
-            cropchain(str(maxid),uname,bcdata,'Company')
-        
-            sql = "INSERT INTO ci_company(id,company,name,mobile,email,address,district,company_code,license_proof,username,password,register_date) VALUES (%s,%s,%s, %s, %s, %s, %s, %s, %s, %s,%s,%s)"
-            val = (maxid,company,name,mobile,email,address,district,company_code,filename,uname,pass1,rdate)
+            # Blockchain (Assuming cropchain function exists)
+            bcdata = f"ID: {maxid}, Company: {name}, Code: {company_code}, Register Date: {rdate}"
+            cropchain(str(maxid), uname, bcdata, 'Company')
+
+            # Insert record into DB
+            sql = """
+                INSERT INTO ci_company
+                (id, company, name, mobile, email, address, district, company_code, license_proof, username, password, register_date)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            val = (maxid, company, name, mobile, email, address, district, company_code, filename, uname, pass1, rdate)
             mycursor.execute(sql, val)
-            mydb.commit()            
-            
-            msg="success"
+            mydb.commit()
+            msg = "success"
         else:
-            msg='fail'
-    return render_template('web/reg_company.html',msg=msg)
+            msg = "Username already exists"
 
+    return render_template('web/reg_company.html', msg=msg)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
