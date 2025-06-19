@@ -666,6 +666,11 @@ def register():
             msg='fail'
     return render_template('web/register.html',msg=msg)
 
+from flask import request, redirect, url_for, render_template, flash
+from werkzeug.utils import secure_filename
+import os
+import datetime
+
 @app.route('/reg_company', methods=['GET', 'POST'])
 def reg_company():
     msg = ""
