@@ -26,9 +26,9 @@ import webbrowser
 from Crypto import Random
 from Crypto.Cipher import AES
 
-DATABASE_URL = os.getenv("postgresql://crop_insurance_db_user:lRBAWC30Hg4P3VzyR7M80DGwInCxVcnj@dpg-d1ieoqripnbc73bkmr5g-a.oregon-postgres.render.com/crop_insurance_db")
-conn = psycopg2.connect(DATABASE_URL)
-cursor = mydb.cursor()
+DATABASE_URL = os.getenv("DATABASE_URL")
+mydb= psycopg2.connect(DATABASE_URL)
+cursor = mydb.cursor())
 app = Flask(__name__)
 ##session key
 app.secret_key = 'Ac989bmSnHPr_IVW8qh0QA'
